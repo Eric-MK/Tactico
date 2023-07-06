@@ -1,7 +1,6 @@
 import pandas as pd
 import pickle
 import streamlit as st
-
 def getData():
     with open('outfield.pkl', 'rb') as file:
         player_df = pd.DataFrame(pickle.load(file))
