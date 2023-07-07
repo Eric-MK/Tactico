@@ -27,6 +27,7 @@ def getRecommendations(player_type, query, count, comparison, league):
     else:
         df, ID, engine = gk_df, gk_ID, gk_engine
 
+    # Access the 'engine' dictionary using the query
     try:
         metric = engine[query]
     except KeyError:
