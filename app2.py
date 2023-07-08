@@ -54,7 +54,7 @@ def getRecommendations(player_type, query, count, comparison, league):
 
     if league != 'All':
         df_res = df_res[df_res['Comp'] == league]
-
+    count = int(count)
     df_res = df_res.head(count)
     
     return df_res
