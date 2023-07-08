@@ -24,9 +24,9 @@ def getRecommendations(player_type, query, count, comparison, league):
       
     # Check if the player in the query matches the player_type
     if player_type == 'Outfield players' and query not in player_ID:
-        return {"error": f"Player '{query}' is not an Outfield player"}
+        return {"error": f"Player '{query}' is not an Outfield player or not in the dataset"}
     elif player_type == 'Goal Keepers' and query not in gk_ID:
-        return {"error": f"Player '{query}' is not a Goal Keeper"}
+        return {"error": f"Player '{query}' is not a Goal Keeper or not in the dataset"}
 
 
     if player_type == 'Outfield players':
