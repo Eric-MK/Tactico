@@ -21,6 +21,13 @@ def getData():
 
 def getRecommendations(player_type, query, count, comparison, league):
     player_df, player_ID, engine, gk_df, gk_ID, gk_engine = getData()
+      
+    # Check if the player in the query matches the player_type
+    if player_type == 'Outfield players' and query not in player_ID:
+        return {"error": f"Player '{query}' is not an Outfield player"}
+    elif player_type == 'Goal Keepers' and query not in gk_ID:
+        return {"error": f"Player '{query}' is not a Goal Keeper"}
+
 
     if player_type == 'Outfield players':
         df, ID, engine = player_df, player_ID, engine

@@ -1,14 +1,12 @@
 from flask import Flask, request, jsonify
-import pandas as pd   # <---- Add this line
-
+import pandas as pd
 import app2  # Assuming that 'app2' is the name of your existing script without the '.py' extension
 
 app = Flask(__name__)
 
 def stringify_keys(d):
-    """Convert a dictionary's keys to strings."""
-    return {str(k): v for k, v in d.items()}
-
+ """Convert a dictionary's keys to strings."""
+ return {str(k): v for k, v in d.items()}
 @app.route('/recommend', methods=['POST'])
 def recommend():
     player_type = request.json['player_type']
@@ -23,18 +21,14 @@ def recommend():
         # Check if the result is a DataFrame and convert to dict if necessary
         if isinstance(result, pd.DataFrame):
             result = result.to_dict(orient='records')
-        
-        # Ensure all keys are strings
-        result = [stringify_keys(item) for item in result]
-        
-        # Print the result just before jsonify
-        print(result)
-        
+            
+            result = [stringify_keys(item) for item in result]
+  # Make sure all keys are strings
+            
         # Return the result (which should now definitely be a dictionary)
         return jsonify(result)
 
     except ValueError as e:
         return jsonify({"error": str(e)})
-        
 if __name__ == '__main__':
     app.run(debug=True)
