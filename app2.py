@@ -40,7 +40,7 @@ def getRecommendations(player_type, query, count, comparison, league):
     except KeyError:
         return {"error": f"Player '{query}' not found"}
     
-    df_res = df.iloc[:, [1, 3, 5, 6, 11,-1]].copy() if player_type == 'Outfield players' else df.iloc[:, [1, 3, 5, 6, 11]].copy()
+    df_res = df.iloc[:, [1, 3, 5, 6, 11]].copy() if player_type == 'Outfield players' else df.iloc[:, [1, 3, 5, 6, 11]].copy()
     df_res['Player'] = list(ID.keys())
     df_res.insert(1, 'Similarity', metric)
     df_res = df_res.sort_values(by=['Similarity'], ascending=False)
